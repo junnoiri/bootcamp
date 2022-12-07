@@ -1,2 +1,2 @@
 #!/usr/bin/zsh
-echo hello world
+echo "hello world"
