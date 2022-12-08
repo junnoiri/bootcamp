@@ -7,10 +7,10 @@ echo 'You got 10 guesses. Guess 1 to 10'
 correctNumber=5
 
 #繰り返し処理のための変数を設定
-result=false
+result='false'
 
 #resultが文字列が"false"である限り、処理を繰り返し実行する
-while [ $result = false ]
+while [ $result = 'false' ]
 do
   #ターミナルからの入力を取得する
   read guessNumber
@@ -19,7 +19,7 @@ do
     echo 'Wrong guess Try again!'
   else
     echo 'Correct!! Good guess!!'
-    result=true
+    result='true'
   fi
 
 done
