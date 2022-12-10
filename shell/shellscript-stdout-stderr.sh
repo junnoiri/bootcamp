@@ -4,7 +4,7 @@ argument="${1}"
 if [ ${argument} = 'ok' ]; then
   echo 'Great!!' >> ok.txt
 elif [ ${argument} = 'ng' ]; then
-  ls test.text 2> ng.txt
+  ls test.txt 2> ng.txt
 else
   echo 'Wrong command line argument. Please try again'
 fi 
