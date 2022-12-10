@@ -1,8 +1,5 @@
 #!/usr/bin/bash
 
-# ../bootcamp/shellscript-path.sh :相対パス
-# /Users/noiritonshisuke/Desktop/bootcamp/shell :絶対パス
-
 # 引数が渡されたことをif文で確認する
 if [ -n "$1" ]
 then
