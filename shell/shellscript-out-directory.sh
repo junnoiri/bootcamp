@@ -15,7 +15,6 @@ if [ -n "$1" ]; then
     do
       touch out/"dir-${directoryIndex}"/"file-${fileIndex}"
     done
-
   done
 
 else
