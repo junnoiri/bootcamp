@@ -3,7 +3,7 @@
 puts 1 + 2
 puts 2 - 3
 puts 5 * 6
-puts 5 /10
+puts 5 / 10
 puts 10 ** 4
 puts 10 % 4
 
@@ -119,8 +119,8 @@ puts (d == e) ? 'd is equal to e' : 'd is not equal to e'
 # (優先順位が低い)
 
 # ()は優先順位が*  /  %よりも高いため、意図した順序で演算子による演算が可能
-puts 12-2*3/2
-puts (12-2)*3/2
+puts 12 - 2 * 3 / 2
+puts (12 - 2) * 3 / 2
 
 # 実行結果
 # 9
