@@ -10,11 +10,11 @@ puts 'No.1:' + array.to_s
 array = Array.new()
 puts 'No.2:' + array.to_s
 
-#サイズを指定して初期化
+# サイズを指定して初期化
 array = Array.new(3)
 puts 'No.3:' + array.to_s
  
-#サイズと要素を指定して初期化
+# サイズと要素を指定して初期化
 array = Array.new(3, 'jun')
 puts 'No.4:' + array.to_s
 
@@ -89,5 +89,136 @@ puts fruits_array.to_s
 # ["Peach", "Melon", "Orange"]
 
 
+# 配列演算子
+# &（積集合）
+# &（積集合）は2つの配列の積集合を作成。2つの配列の要素から一致する要素を取得して、新しい配列を作成
+array_1 = [1, 1, 2, 2, 3, 3, 4, 5, 7]
+array_2 = [1, 2, 3, 3, 6, 7, 8]
+p array_1 & array_2 
+
+# 実行結果 
+# [1, 2, 3, 7]
+
+# *（配列の内容を繰り返した配列を作成）
+# *（乗算）を使用すると、同じ要素を繰り返した配列を作成
+array_3 = [1, 2, 3]
+p array_3 * 5
+
+# 実行結果 
+[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+
+# +（配列どうしを連結）
+# 加算を使用し、配列同士を連結することが可能
+string_array = ["Samurai", "Ruby", "Rails"]
+p array + ["Swift", "Java"] 
+
+# 実行結果 
+# ["Samurai", "Ruby", "Rails", "Swift", "Java"]
+
+# -（差集合）
+# 減算（-）を使用し、重複している要素が取り除かれた配列を作成
+p array_1 - array_2
+
+# 実行結果 
+# [4, 5]
+
+# |（和集合）
+# | を配列で使用し、重複している要素が取り除かれた配列を作成
+p array_1 | array_2
+
+# 実行結果 
+# [1, 2, 3, 4, 5, 7, 6, 8]
 
 
+# 繰り返し処理
+# eachメソッド
+# eachメソッドは{}で囲まれた範囲を引数とする
+fruits_array.each{ |fruit|
+  puts fruit
+}
+
+# ブロックは{}ではなくdoとendに置き換えることができる
+fruits_array.each do |fruit|
+  puts fruit
+end
+
+
+# do...endと{}の違い
+# do endより{}の方が結合が強い
+
+# {}が使用されるケース
+# ブロック付きメソッドがインラインの場合
+[1, 2, 3].each {|e| puts e}
+
+# ブロック付きメソッドの戻り値を利用する場合
+numbers = [1, 2, 3].map {|numbers| numbers ** 3}
+
+# ブロック付きメソッドからさらにメソッドチェーンする場合
+(1..10).select {|e| e.even?}.map {|e| e ** 3}
+
+# リソース管理のためにブロックを使う場合
+
+# do...endが使用されるケース
+# 上記以外の場合、基本こちらを使うべき
+
+
+# each_with_indexメソッド
+# each_with_indexメソッドは下記のようにブロック引数を２つ取ることが可能
+# 配列に対してループ処理を行う
+fruits_array = ['Banana', 'Apple', 'Grape', 'Strawberry']
+fruits_array.each_with_index { |fruit, index|
+
+  # 実行する処理1(１つ目のブロック引数がfruiteで配列の各要素を表す)
+  puts fruit
+
+  # 実行する処理2(２つ目のブロック引数には添字の番号が入る)
+  puts index
+}
+
+
+# Mapメソッド
+# mapメソッドはブロック内の式を実行した結果を返す。
+# eachとmapの違いはmapメソッドはブロックごとに処理された結果(戻り値)を集めた配列を返す
+
+numbers = [1, 2, 3, 4, 5, 6]
+p numbers.map { |number| number * 3 }
+
+# 出力結果
+# [3, 6, 9, 12, 15, 18]
+
+numbers.each { |number|
+  p number * 3
+}
+
+# 出力結果
+# 3
+# 6
+# 9
+# 12
+# 15
+# 18
+
+
+# Method chain
+# メソッドを連続的に呼び出すことをメソッドチェインという
+# "hello_word"という文字列を"_"で分割して配列wordsに格納
+string = "hello_world"
+words = string.split("_")
+
+words = words.map {|word|
+# 頭文字を大文字に変換
+  word.capitalize
+}
+# Array.joinで文字列を連結し、出力
+string = words.join(" ")
+puts string
+
+# string.split、array.mapの戻り値はどっちもArray
+# そのため、method chainを利用してこれらを連続的に記述
+puts string = "hello_world".split("_").map {|word| word.capitalize }.join(" ")
+
+# 出力結果
+# Hello World
+# Hello World
+
+# メソッドチェインでは戻り値の種類を意識することが必要
