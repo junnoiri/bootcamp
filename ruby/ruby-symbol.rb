@@ -31,7 +31,7 @@ name_symbol = :Jun
 puts name_symbol.upcase!
 
 # 実行結果
-#  undefined method `upcase!' for :Jun:Symbol (エラーが生じる)
+# undefined method `upcase!' for :Jun:Symbol (エラーが生じる)
 
 # 文字列は破壊的な変更が可能
 name_string = 'Jun'
