@@ -11,10 +11,6 @@
 
 # メタ文字列
 # メタ文字とは本来もつ文字の意味とは別に、プログラミングを行う上で定義した特別な意味を持つ文字列のことをメタ文字と呼ぶ
-# 例　メタ文字/ 説明/ 使用例/ 合致する文字列/ 合致しない文字列
-# .	/ 任意の1文字/ h.t/	hat,hot,hit/ head,height
-# * / 直前のパターンを0回以上繰り返す/ 山川*/ 山,山川,山川川/ 里
-
 
 # 正規表現で文字列などの抽出を行う方法
 # match（マッチした部分を取得する）
@@ -85,12 +81,12 @@ p /aaa/ =~ "ruby"
 # 正規表現で置換処理
 # gsub, gsub!（一致した部分を全て置き換える）
 # gsubとgsub!の違いは、置換対象に対して置換後の内容に上書きするかしないかの違い
-#gsub
+# gsub
 target = "hello, hello, hello Ruby"
 puts target.gsub(/hello/, "morning")
 puts target
  
-#gsub!
+# gsub!
 target2 = "hello, hello, hello Rails"
 puts target2.gsub!(/hello/, "morning")
 puts target2
@@ -102,12 +98,12 @@ puts target2
 # morning, morning, morning Rails
 
 # sub, sub!（一致した最初の部分だけを置き換える）
-#sub
+# sub
 target = "hello, hello, hello Ruby"
 puts target.sub(/hello/, "morning")
 puts target
  
-#sub!
+# sub!
 target2 = "hello, hello, hello Rails"
 puts target2.sub!(/hello/, "morning")
 puts target2
