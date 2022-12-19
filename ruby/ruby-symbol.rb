@@ -1,7 +1,10 @@
 # Symbol
 # 使い方
-string = "string"   #文字列
-symbol = :symbol    #シンボル
+# 文字列
+string = "string"
+
+# シンボル   
+symbol = :symbol
 
 # 前置コロンと後置コロン
 # ハッシュのキーとしてシンボルを使う際や、キーワード引数を使う際に、コロン記号「:」を後置する
