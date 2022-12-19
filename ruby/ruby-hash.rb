@@ -126,7 +126,7 @@ p value
 
 # has_key (ハッシュにkeyが存在するか確かめる)
 # ハッシュ内に存在しないkeyを指定すると、nil値が返ってきます
-if fruits_hash.has_key? :orange then
+if fruits_hash.has_key? :orange 
   puts 'fruits_hash has key orange'
 else
   puts 'fruits_hash dose not have key orange'
@@ -136,7 +136,7 @@ end
 # fruits_hash has key orange
 
 # has_value (ハッシュにvalueが存在するか確かめる)
-if fruits_hash.has_value? "200円" then
+if fruits_hash.has_value? "200円" 
   puts 'fruits_hash has value 200円'
 else
   puts 'fruits_hash dose not have value 200円'
