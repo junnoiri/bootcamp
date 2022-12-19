@@ -24,7 +24,6 @@ puts 'No.4:' + array.to_s
 # No.3:[nil, nil, nil]
 # No.4:["jun", "jun", "jun"]
 
-
 # 要素の取得
 # 配列の要素を取得するには、配列の入った変数に対して[]演算子にインデックス（添え字）を指定
 fruits_array = ['Banana', 'Apple', 'Grape', 'Strawberry']
@@ -38,7 +37,6 @@ puts 'No.4:' + fruits_array[3].to_s
 # No.2:Apple
 # No.3:Grape
 # No.4:Strawberry
-
 
 # 要素の追加
 # 配列に要素を追加するには、配列の入った変数に[]演算子で存在しないインデックスを指定し、それに対し値を代入
@@ -58,7 +56,6 @@ puts fruits_array.to_s
 # 実行結果
 # ["Banana", "Apple", "Grape", "Strawberry", "Melon", "Orange"]
 
-
 # 要素の更新
 puts fruits_array[0].to_s
 
@@ -71,7 +68,6 @@ puts fruits_array.to_s
 # Banana
 # Peach
 # ["Peach", "Apple", "Grape", "Strawberry", "Melon", "Orange"]
-
 
 # 要素の削除
 # 配列の要素を削除するには、配列のdeleteメソッドを使用
@@ -87,7 +83,6 @@ puts fruits_array.to_s
 # 実行結果
 # ["Peach", "Apple", "Strawberry", "Melon", "Orange"]
 # ["Peach", "Melon", "Orange"]
-
 
 # 配列演算子
 # &（積集合）
@@ -129,7 +124,6 @@ p array_1 | array_2
 # 実行結果 
 # [1, 2, 3, 4, 5, 7, 6, 8]
 
-
 # 繰り返し処理
 # eachメソッド
 # eachメソッドは{}で囲まれた範囲を引数とする
@@ -141,7 +135,6 @@ fruits_array.each{ |fruit|
 fruits_array.each do |fruit|
   puts fruit
 end
-
 
 # do...endと{}の違い
 # do endより{}の方が結合が強い
@@ -161,20 +154,17 @@ numbers = [1, 2, 3].map {|numbers| numbers ** 3}
 # do...endが使用されるケース
 # 上記以外の場合、基本こちらを使うべき
 
-
 # each_with_indexメソッド
 # each_with_indexメソッドは下記のようにブロック引数を２つ取ることが可能
 # 配列に対してループ処理を行う
 fruits_array = ['Banana', 'Apple', 'Grape', 'Strawberry']
 fruits_array.each_with_index { |fruit, index|
-
   # 実行する処理1(１つ目のブロック引数がfruiteで配列の各要素を表す)
   puts fruit
 
   # 実行する処理2(２つ目のブロック引数には添字の番号が入る)
   puts index
 }
-
 
 # Mapメソッド
 # mapメソッドはブロック内の式を実行した結果を返す。
@@ -198,7 +188,6 @@ numbers.each { |number|
 # 15
 # 18
 
-
 # Method chain
 # メソッドを連続的に呼び出すことをメソッドチェインという
 # "hello_word"という文字列を"_"で分割して配列wordsに格納
@@ -206,9 +195,9 @@ string = "hello_world"
 words = string.split("_")
 
 words = words.map {|word|
-# 頭文字を大文字に変換
   word.capitalize
 }
+
 # Array.joinで文字列を連結し、出力
 string = words.join(" ")
 puts string
