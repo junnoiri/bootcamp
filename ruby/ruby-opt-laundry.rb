@@ -1,38 +1,54 @@
 class WashingMachine
-  @@cloth = 0
+  @@laundry_items = []
 
-  def initialize(laundry_capacity)
-    @laundry_capacity = []
-  end
-  
-  if cloth_number > 30 
-    puts "The washing machine is full."
-  else
+  def put_clothes(clothes)
+    @clothes = clothes
     
+    if @@laundry_items.length > 30
+      puts "The washing machine is full."
+    else
+      @@laundry_items.push(@clothes.name)
+    end
   end
 
-  def initialize(quantity, price)
-    @quantity = quantity
-    @price = price
-  end
+  def take_clothes(clothes)
+    @clothes = clothes
 
-  def buy
-    puts "りんごを#{@quantity}個買い、#{calculation(@quantity, @price)}円でした。"
-  end
-
-  private
-
-  def laundry()
+    if @clothes.condition == "dirty"
+      @clothes.condition = "clean"
+    elsif @clothes.condition == "clean"
+      puts "The #{@clothes.name} is already clean" 
+    else
+      puts "The condition has something wrong"  
+    end
     
-  end
+    @@laundry_items.delete(@clothes.name)
+    return @clothes
+  end 
 end
 
-class Cloth
-  def initialize(condition)
+class Clothes
+  attr_accessor :name, :condition
+
+  def initialize(name, condition)
+    @name = name
     @condition = condition
   end
 end
 
-cloth1 = Cloth.new("dirty")
-cloth2 = Cloth.new("clean")
+t_shirt = Clothes.new("t-shirt", "dirty")
+jeans = Clothes.new("jeans", "clean")
 
+p t_shirt.condition
+p jeans.condition
+
+washing_machine = WashingMachine.new()
+
+washing_machine.put_clothes(t_shirt)
+washing_machine.put_clothes(jeans)
+
+t_shirt_laundry = washing_machine.take_clothes(t_shirt)
+jeans_laundry = washing_machine.take_clothes(jeans)
+
+p t_shirt_laundry.condition
+p jeans_laundry.condition
