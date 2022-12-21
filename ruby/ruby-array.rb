@@ -131,11 +131,6 @@ fruits_array.each{|fruit|
   puts fruit
 }
 
-# ブロックは{}ではなくdoとendに置き換えることができる
-fruits_array.each do |fruit|
-  puts fruit
-end
-
 # do...endと{}の違い
 # do endより{}の方が結合が強い
 
