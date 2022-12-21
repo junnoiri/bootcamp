@@ -16,9 +16,9 @@ symbol = :symbol
 puts :Ruby.class
 puts 'Ruby'.class
 
-# シンボルは必ず同一のオブジェクトとなり、オブジェクトの数が増えないためメモリの使用効率がよくなる。
+# シンボルは必ず同一のオブジェクトとなり、オブジェクトの数が増えないためメモリの使用効率がよくなる
 puts :Ruby.object_id
-puts :Ruby.object_id 
+puts :Ruby.object_id
 # 実行結果
 # 1045348
 # 1045348
@@ -45,11 +45,11 @@ puts name_string.upcase!
 
 # シンボルを使用するメリット
 # メモリ消費が少ない/ 処理が高速になる
-# シンボルは内部で整数として管理されるため、文字列と比べて高速に処理できる。
+# シンボルは内部で整数として管理されるため、文字列と比べて高速に処理できる
 
 # 可読性が上がる
 # 通常のハッシュ
-dog = { "name" => "pochi", "kind" => "shibaken" }
+dog = {"name" => "pochi", "kind" => "shibaken"}
 
 # シンボルを使用したハッシュ
-dog = {name: "pochi", kind: "shibaken" }
+dog = {name: "pochi", kind: "shibaken"}
