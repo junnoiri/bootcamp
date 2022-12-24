@@ -58,7 +58,7 @@ class Counter
     @counter_name = counter_name
   end
     
-  def self.get_count
+  def self.counter_number
     @@count
   end
     
@@ -71,7 +71,7 @@ count1 = Counter.new("apple")
 count2 = Counter.new("banana")
 count3 = Counter.new("cookie")
    
-p Counter.get_count
+p Counter.counter_number
 p Counter.counter_name
 
 # クラスメソッドからインスタンス変数にはアクセスできないため、結果はnilになる
@@ -89,7 +89,7 @@ class Counter
     @counter_name = counter_name
   end
       
-  def get_count
+  def counter_number
     @@count
   end
       
@@ -102,7 +102,7 @@ count1 = Counter.new("apple")
 count2 = Counter.new("banana")
 count3 = Counter.new("cookie")
      
-p count3.get_count
+p count3.counter_number
 p count1.counter_name
 p count2.counter_name
 p count3.counter_name
@@ -195,32 +195,6 @@ puts user.name
 # private
 # クラス外部には公開されないメソッドでクラス内のメソッドから呼び出して使われるメソッド
 # private以下に記載し、呼び出す際は「self」をつけない関数形式で呼び出す
-class Test
-  # 関数形式での呼び出しは可能
-  def call_private
-    private_method    
-  end
-
-  # レシーバ（self）形式での呼び出しはできない
-  def call_private
-    self.private_method   
-  end
-
-  private
-  def private_method
-    p "Testing"
-  end
-end
-
-test = Test.new
-# 呼び出すことが可能
-test.call_private 
-# エラーになる
-test.call_private_with_reciever 
-
-# 実行結果:
-# "Testing"
-# undefined method `call_private_with_reciever' for #<Test:0x00007f8a8c82c378> (NoMethodError)
 
 # protected
 # 基本的に「private」メソッドと同様にクラス外部には公開されないメソッドでクラス内のメソッドから呼び出して使われるメソッド
