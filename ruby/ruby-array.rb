@@ -100,7 +100,7 @@ array_3 = [1, 2, 3]
 p array_3 * 5
 
 # 実行結果 
-[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+# [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
 
 # +（配列どうしを連結）
 # 加算を使用し、配列同士を連結することが可能
@@ -127,33 +127,26 @@ p array_1 | array_2
 # 繰り返し処理
 # eachメソッド
 # eachメソッドは{}で囲まれた範囲を引数とする
-fruits_array.each{|fruit|
-  puts fruit
-}
+fruits_array.each { |fruit| puts fruit }
 
 # do...endと{}の違い
 # do endより{}の方が結合が強い
 
 # {}が使用されるケース
 # ブロック付きメソッドがインラインの場合
-[1, 2, 3].each{|e| puts e}
+[1, 2, 3].each { |e| puts e }
 
 # ブロック付きメソッドの戻り値を利用する場合
-numbers = [1, 2, 3].map{|numbers| numbers ** 3}
+numbers = [1, 2, 3].map { |numbers| numbers ** 3 }
 
 # ブロック付きメソッドからさらにメソッドチェーンする場合
-(1..10).select{|e| e.even?}.map{|e| e ** 3}
-
-# リソース管理のためにブロックを使う場合
-
-# do...endが使用されるケース
-# 上記以外の場合、基本こちらを使うべき
+(1..10).select { |e| e.even? }.map { |e| e ** 3 }
 
 # each_with_indexメソッド
 # each_with_indexメソッドは下記のようにブロック引数を２つ取ることが可能
 # 配列に対してループ処理を行う
 fruits_array = ['Banana', 'Apple', 'Grape', 'Strawberry']
-fruits_array.each_with_index{|fruit, index|
+fruits_array.each_with_index { |fruit, index|
   # 実行する処理1(１つ目のブロック引数がfruiteで配列の各要素を表す)
   puts fruit
 
@@ -166,14 +159,12 @@ fruits_array.each_with_index{|fruit, index|
 # eachとmapの違いはmapメソッドはブロックごとに処理された結果(戻り値)を集めた配列を返す
 
 numbers = [1, 2, 3, 4, 5, 6]
-p numbers.map{|number| number * 3}
+p numbers.map { |number| number * 3 }
 
 # 出力結果
 # [3, 6, 9, 12, 15, 18]
 
-numbers.each{|number|
-  p number * 3
-}
+numbers.each { |number| p number * 3 }
 
 # 出力結果
 # 3
@@ -189,7 +180,7 @@ numbers.each{|number|
 string = "hello_world"
 words = string.split("_")
 
-words = words.map{|word| word.capitalize}
+words = words.map { |word| word.capitalize }
 
 # Array.joinで文字列を連結し、出力
 string = words.join(" ")
@@ -197,7 +188,7 @@ puts string
 
 # string.split、array.mapの戻り値はどっちもArray
 # そのため、method chainを利用してこれらを連続的に記述
-puts string = "hello_world".split("_").map{|word| word.capitalize}.join(" ")
+puts string = "hello_world".split("_").map { |word| word.capitalize }.join(" ")
 
 # 出力結果
 # Hello World
