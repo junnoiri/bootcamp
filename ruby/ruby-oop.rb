@@ -62,7 +62,7 @@ class Apple
     @price = price
   end
    
-  def buy
+  def result
     puts "りんごを#{@quantity}個買い、#{calculation(@quantity, @price)}円でした。"
   end
    
@@ -76,8 +76,8 @@ end
 apple1 = Apple.new(2, 300)
 apple2 = Apple.new(3, 300)
 
-puts apple1.buy
-puts apple2.buy
+puts apple1.result
+puts apple2.result
 
 # 実行結果
 # りんごを2個買い、600円でした。
@@ -98,7 +98,7 @@ class Shopping
    @price = price
   end
 
-  def buy(product='')
+  def result(product='')
    puts "#{product}を#{@quantity}個買い、#{calculation(@quantity, @price)}円でした。"
   end
 
@@ -110,15 +110,15 @@ class Shopping
 end
 
 # Grape、OrangeクラスにShoppingクラスを継承
-# オーバーライドしているbuyメソッドをsuperで呼び出す（ポリモーフィズム）
+# オーバーライドしているresultメソッドをsuperで呼び出す（ポリモーフィズム）
 class Grape < Shopping
-  def buy(product='ぶどう')
+  def result(product='ぶどう')
     super
   end
 end
 
 class Orange < Shopping
-  def buy(product='オレンジ')
+  def result(product='オレンジ')
     super
   end
 end
@@ -126,8 +126,8 @@ end
 grape = Grape.new(2, 300)
 orange = Orange.new(4 ,300)
 
-puts grape.buy
-puts orange.buy
+puts grape.result
+puts orange.result
 
 # 実行結果
 # ぶどうを2個買い、600円でした。
