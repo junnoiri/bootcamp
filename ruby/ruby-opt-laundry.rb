@@ -1,29 +1,34 @@
 class WashingMachine
-  @@laundry_items = []
+  MAXIMUM_WASHING_MACHINE_CAPACITY = 30
+
+  def initialize
+    @laundry_items = []
+  end
 
   def put_clothes(clothes)
     @clothes = clothes
-    
-    if @@laundry_items.length > 30
+    if @laundry_items.length >= MAXIMUM_WASHING_MACHINE_CAPACITY
       puts "The washing machine is full."
     else
-      @@laundry_items.push(@clothes.name)
+      @laundry_items.push(@clothes)
     end
   end
 
   def take_clothes(clothes)
     @clothes = clothes
+    @laundry_items.delete(@clothes)
+  end 
 
-    if @clothes.condition == "dirty"
-      @clothes.condition = "clean"
-    elsif @clothes.condition == "clean"
-      puts "The #{@clothes.name} is already clean" 
-    else
-      puts "The condition has something wrong"  
-    end
-    
-    @@laundry_items.delete(@clothes.name)
-    return @clothes
+  def wash_clothes
+    @laundry_items.each { |laundry_item| 
+      if laundry_item.condition == "dirty"
+        laundry_item.condition = "clean"
+      elsif laundry_item.condition == "clean"
+        puts "The #{laundry_item.name} is already clean"
+      else
+        puts "The condition has something wrong"  
+      end
+    }
   end 
 end
 
@@ -47,8 +52,10 @@ washing_machine = WashingMachine.new()
 washing_machine.put_clothes(t_shirt)
 washing_machine.put_clothes(jeans)
 
-t_shirt_laundry = washing_machine.take_clothes(t_shirt)
-jeans_laundry = washing_machine.take_clothes(jeans)
+washing_machine.wash_clothes
 
-p t_shirt_laundry.condition
-p jeans_laundry.condition
+washing_machine.take_clothes(t_shirt)
+washing_machine.take_clothes(jeans)
+
+p t_shirt.condition
+p jeans.condition
