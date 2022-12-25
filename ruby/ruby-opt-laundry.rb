@@ -6,17 +6,15 @@ class WashingMachine
   end
 
   def put_clothes(clothes)
-    @clothes = clothes
     if @laundry_items.length >= MAXIMUM_WASHING_MACHINE_CAPACITY
       puts "The washing machine is full."
     else
-      @laundry_items.push(@clothes)
+      @laundry_items.push(clothes)
     end
   end
 
   def take_clothes(clothes)
-    @clothes = clothes
-    @laundry_items.delete(@clothes)
+    @laundry_items.delete(clothes)
   end 
 
   def wash_clothes
