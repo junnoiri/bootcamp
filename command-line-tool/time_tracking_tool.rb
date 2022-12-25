@@ -1,58 +1,62 @@
 class TrackTime
-#   attr_accessor :task_name, :start_time, :ending_time, :actual_time
+  attr_accessor :task_name, :start_time, :end_time, :actual_time
 
-#   def initialize(task_name, start_time, ending_time: "", actual_time: "")
-#     @task_name = task_name
-#     @start_time = start_time
-#   end
+  def initialize(task_name, start_time: "", end_time: "", actual_time: "")
+    @task_name = task_name
+  end
 
+  # タスクの開始を記録
   def record_start_time
-    # ファイル名をbootcampの中から取ってくる
+    @start_time = Time.now
+    @log_start_time = "タスク(#{@task_name})開始時刻: #{@start_time.strftime('%Y年%m月%d日 %H時%M分%S秒')}"
+    puts @log_start_time
 
-
-    # タスクの開始　＝　ファイル名が作成された時
+    # ログファイルを作成し、タスクの開始をログファイルに記録
+    @task_log = File.open("../log/202212/#{@start_time.strftime('%Y%m%d')}.txt", "a")
+    @task_log.puts("#{@log_start_time}")
+    @task_log.close
+    
   end
 
+  # タスクの終了を記録
   def record_end_time
-    # ファイル名をbootcampの中から取ってくる
+    @end_time = Time.now
+    @log_end_time = "タスク(#{@task_name})終了時刻: #{@end_time.strftime('%Y年%m月%d日 %H時%M分%S秒')}"
+    puts @log_end_time
 
-    # タスクの開始　＝　ファイル名が作成された時
+    # タスクの終了をログファイルに記録
+    @task_log = File.open("../log/202212/#{@end_time.strftime('%Y%m%d')}.txt", "a")
+    @task_log.puts("#{@log_end_time}")
+    @task_log.close
   end
 
-  # ファイルの情報を表示
-  def show_file_info(path)
-    file_status = File::Stat.new(path)
-    begin
-      puts "birthtime: #{file_status.birthtime} (ファイル作成日時)"
-    rescue NotImplementedError => e
-      puts e.inspect
-    end
-    puts "modify time: #{file_status.mtime} (最終更新日時 modify time)"
-    puts "change time: #{file_status.ctime} (最終状態変更日時 change time)"
-    puts "access time: #{file_status.atime} (最終アクセス日時 access time)"
+  def record_actual_time
+
+    @actual_time = (@end_time - @start_time).floor / 60
+    @log_actual_time = "タスク(#{@task_name})実績時間: #{@actual_time}分}"
+    puts @log_actual_time
+    
+    # タスクの実績時間をログファイルに記録
+    @task_log = File.open("../log/202212/#{@actual_time.strftime('%Y%m%d')}.txt", "a")
+    @task_log.puts("#{@log_actual_time}")
+    @task_log.close
   end
-   
+
+  def find_todqys_log_file
+    @date_today = Time.now.strftime('%Y%m%d')
+    @today_log_file = Dir.glob("#{@date_today}*")  
+  end
+
+  # 本日のタスク一覧（タスク名、開始時間、終了時間、実績時間）と本日の作業合計時間を表示
+  def show_today_tasks
+    record_actual_time
+    puts "本日のタスク一覧"
+    
+
+    puts "タスク名: #{@task_name}\n開始時間: #{@log_start_time}\n終了時間: #{@log_end_time}\n実績時間: #{@actual_time}分"
+    puts "本日の作業合計時間: "
+  end  
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class Option
   def check_option(option_kind)
@@ -60,9 +64,9 @@ class Option
       when "-s", "--start"
         record_start_time
       when "-f", "--finish"
-        record_ending_time
+        record_end_time
       when "-vt", "--view-total"
-        show_todays_task
+        show_todays_tasks
       when "-vw", "--view-week"
         show_week_tasks
       else
@@ -75,28 +79,24 @@ class Option
   end
   
   def record_start_time
-    # Taskクラスからインスタンスを作成して、配列に追加する処理を記述
-    track_time = TrackTime.new
-    track_time.show_file_info(ARGV[1])
+    track_time = TrackTime.new(ARGV[1])
+    track_time.record_start_time
   end
 
   def record_end_time
-    # Taskインスタンスの ending_time に終了時刻を記録させる処理を記述
-    # そのタスクの実績時間も計算して、actual_time に記録させる処理を記述
+    track_time = TrackTime.new(ARGV[1])
+    track_time.record_end_time
   end
 
   def show_todays_tasks
-    # タスクを格納している配列から、インスタンスを取り出し、本日のタスクを表示させる処理を記述
-    # 同時に、作業時間を合計する処理を記述し、ループ処理を抜けた後、表示させる処理を記述
+    track_time = TrackTime.new(ARGV[1])
+    track_time.show_today_tasks
+
   end
 
   def show_week_tasks
-    # 直近7日間の日別作業時間を表示させる処理を記述
-    # Time クラスで、直近7日間を取得
   end
 end
 
 option = Option.new
 option.check_option(ARGV[0])
-
-
