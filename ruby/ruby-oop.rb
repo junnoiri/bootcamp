@@ -23,7 +23,7 @@ class Car
   end
 
   # メソッド
-  def accel
+  def accelerate
     @speed += 10
   end
 
@@ -41,11 +41,11 @@ car4 = Car.new(20000000, "Black", 200)
 car5 = Car.new(50000000, "Blue", 350)
 
 puts car1.price
-puts car1.accel
+puts car1.accelerate
 puts car2.color
-puts car3.accel
+puts car3.accelerate
 puts car4.speed
-puts car5.accel
+puts car5.accelerate
 
 # 実行結果
 # 200000
@@ -62,13 +62,13 @@ class Apple
     @price = price
   end
    
-  def result
-    puts "りんごを#{@quantity}個買い、#{calculation(@quantity, @price)}円でした。"
+  def show_quantity_price
+    puts "りんごを#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
   end
    
   private
    
-  def calculation(quantity, price)
+  def calculate_total_price(quantity, price)
     quantity * price
   end
 end
@@ -76,8 +76,8 @@ end
 apple1 = Apple.new(2, 300)
 apple2 = Apple.new(3, 300)
 
-puts apple1.result
-puts apple2.result
+puts apple1.show_quantity_price
+puts apple2.show_quantity_price
 
 # 実行結果
 # りんごを2個買い、600円でした。
@@ -98,27 +98,27 @@ class Shopping
    @price = price
   end
 
-  def result(product='')
-   puts "#{product}を#{@quantity}個買い、#{calculation(@quantity, @price)}円でした。"
+  def show_quantity_price(product='')
+   puts "#{product}を#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
   end
 
   private
 
-  def calculation(quantity, price)
+  def calculate_total_price(quantity, price)
    quantity * price
   end
 end
 
 # Grape、OrangeクラスにShoppingクラスを継承
-# オーバーライドしているresultメソッドをsuperで呼び出す（ポリモーフィズム）
+# オーバーライドしているshow_quantity_priceメソッドをsuperで呼び出す（ポリモーフィズム）
 class Grape < Shopping
-  def result(product='ぶどう')
+  def show_quantity_price(product='ぶどう')
     super
   end
 end
 
 class Orange < Shopping
-  def result(product='オレンジ')
+  def show_quantity_price(product='オレンジ')
     super
   end
 end
@@ -126,8 +126,8 @@ end
 grape = Grape.new(2, 300)
 orange = Orange.new(4 ,300)
 
-puts grape.result
-puts orange.result
+puts grape.show_quantity_price
+puts orange.show_quantity_price
 
 # 実行結果
 # ぶどうを2個買い、600円でした。
