@@ -15,7 +15,6 @@ class TrackTime
     @task_log = File.open("../log/202212/#{@start_time.strftime('%Y%m%d')}.txt", "a")
     @task_log.puts("#{@log_start_time}")
     @task_log.close
-    
   end
 
   # タスクの終了を記録
@@ -31,7 +30,6 @@ class TrackTime
   end
 
   def record_actual_time
-
     @actual_time = (@end_time - @start_time).floor / 60
     @log_actual_time = "タスク(#{@task_name})実績時間: #{@actual_time}分}"
     puts @log_actual_time
@@ -51,8 +49,6 @@ class TrackTime
   def show_today_tasks
     record_actual_time
     puts "本日のタスク一覧"
-    
-
     puts "タスク名: #{@task_name}\n開始時間: #{@log_start_time}\n終了時間: #{@log_end_time}\n実績時間: #{@actual_time}分"
     puts "本日の作業合計時間: "
   end  
@@ -91,7 +87,6 @@ class Option
   def show_todays_tasks
     track_time = TrackTime.new(ARGV[1])
     track_time.show_today_tasks
-
   end
 
   def show_week_tasks
