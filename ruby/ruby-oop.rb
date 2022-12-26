@@ -113,13 +113,13 @@ end
 # Grape、OrangeクラスにFruitsクラスを継承
 # オーバーライドしているshow_quantity_priceメソッドをsuperで呼び出す（ポリモーフィズム）
 class Grape < Fruits
-  def show_quantity_price()
+  def show_quantity_price
     super
   end
 end
 
 class Orange < Fruits
-  def show_quantity_price()
+  def show_quantity_price
     super
   end
 end
