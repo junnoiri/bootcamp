@@ -1,12 +1,12 @@
 class WashingMachine
-  MAXIMUM_WASHING_MACHINE_CAPACITY = 30
+  CAPACITY = 30
 
   def initialize
     @laundry_items = []
   end
 
   def put_clothes(clothes)
-    if @laundry_items.length >= MAXIMUM_WASHING_MACHINE_CAPACITY
+    if @laundry_items.length >= CAPACITY
       puts "The washing machine is full."
     else
       @laundry_items.push(clothes)
@@ -19,15 +19,9 @@ class WashingMachine
 
   def wash_clothes
     @laundry_items.each { |laundry_item| 
-      if laundry_item.condition == "dirty"
-        laundry_item.condition = "clean"
-      elsif laundry_item.condition == "clean"
-        puts "The #{laundry_item.name} is already clean"
-      else
-        puts "The condition has something wrong"  
-      end
+      laundry_item.condition = "clean"
     }
-  end 
+  end
 end
 
 class Clothes
