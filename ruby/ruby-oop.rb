@@ -91,45 +91,33 @@ puts apple2.show_quantity_price
 # 継承は、クラス定義の共通部分を別クラスにまとめて、コードの重複を排除する仕組み
 # 共通部分のクラスのことをスーパークラスと呼び、それを利用するクラスをサブクラス呼ぶ
 
-# スーパークラスとしてFruitsクラスを作成
-class Fruits
-  def initialize(name, quantity, price)
-    @name = name
-    @quantity = quantity
-    @price = price
-  end
-
-  def show_quantity_price
-   puts "#{@name}を#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
-  end
-
-  private
-
-  def calculate_total_price(quantity, price)
-   quantity * price
+# スーパークラスとしてAnimalクラスを作成
+class Animal
+  def cry(voice='')
+    puts "#{voice}"
   end
 end
 
-# Grape、OrangeクラスにFruitsクラスを継承
-# オーバーライドしているshow_quantity_priceメソッドをsuperで呼び出す（ポリモーフィズム）
-class Grape < Fruits
-  def show_quantity_price
+# Dog、CatクラスにAnimalクラスを継承
+# オーバーライドしているcryメソッドをsuperで呼び出す（ポリモーフィズム）
+class Dog < Animal
+  def cry(voice='Woof woof')
     super
   end
 end
 
-class Orange < Fruits
-  def show_quantity_price
+class Cat < Animal
+  def cry(voice='Meow meow')
     super
   end
 end
 
-grape = Grape.new("ぶどう", 2, 300)
-orange = Orange.new("オレンジ", 4 ,500)
+dog = Dog.new
+cat = Cat.new
 
-puts grape.show_quantity_price
-puts orange.show_quantity_price
+puts dog.cry
+puts cat.cry
 
 # 実行結果
-# ぶどうを2個買い、600円でした。
-# オレンジを4個買い、2000円でした。
+# Woof woof
+# Meow meow
