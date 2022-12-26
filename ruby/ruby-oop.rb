@@ -91,8 +91,8 @@ puts apple2.show_quantity_price
 # 継承は、クラス定義の共通部分を別クラスにまとめて、コードの重複を排除する仕組み
 # 共通部分のクラスのことをスーパークラスと呼び、それを利用するクラスをサブクラス呼ぶ
 
-# スーパークラスとしてShoppingクラスを作成
-class Shopping
+# スーパークラスとしてFruitsクラスを作成
+class Fruits
   def initialize(quantity, price)
    @quantity = quantity
    @price = price
@@ -109,15 +109,15 @@ class Shopping
   end
 end
 
-# Grape、OrangeクラスにShoppingクラスを継承
+# Grape、OrangeクラスにFruitsクラスを継承
 # オーバーライドしているshow_quantity_priceメソッドをsuperで呼び出す（ポリモーフィズム）
-class Grape < Shopping
+class Grape < Fruits
   def show_quantity_price(product='ぶどう')
     super
   end
 end
 
-class Orange < Shopping
+class Orange < Fruits
   def show_quantity_price(product='オレンジ')
     super
   end
