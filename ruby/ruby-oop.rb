@@ -55,34 +55,6 @@ puts car5.accelerate
 # 200
 # 360
 
-
-class Apple
-  def initialize(quantity, price)
-    @quantity = quantity
-    @price = price
-  end
-   
-  def show_quantity_price
-    puts "りんごを#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
-  end
-   
-  private
-   
-  def calculate_total_price(quantity, price)
-    quantity * price
-  end
-end
-
-apple1 = Apple.new(2, 300)
-apple2 = Apple.new(3, 300)
-
-puts apple1.show_quantity_price
-puts apple2.show_quantity_price
-
-# 実行結果
-# りんごを2個買い、600円でした。
-# りんごを3個買い、900円でした。
-
 # ポリモーフィズム
 # 類似したクラスに対するメッセージの送り方を共通にする仕組み
 # また、相手が具体的にどのクラスのインスタンスであるかを意識せずにメッセージを送れる仕組み
