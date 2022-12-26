@@ -93,13 +93,14 @@ puts apple2.show_quantity_price
 
 # スーパークラスとしてFruitsクラスを作成
 class Fruits
-  def initialize(quantity, price)
-   @quantity = quantity
-   @price = price
+  def initialize(name, quantity, price)
+    @name = name
+    @quantity = quantity
+    @price = price
   end
 
-  def show_quantity_price(product='')
-   puts "#{product}を#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
+  def show_quantity_price
+   puts "#{@name}を#{@quantity}個買い、#{calculate_total_price(@quantity, @price)}円でした。"
   end
 
   private
@@ -112,19 +113,19 @@ end
 # Grape、OrangeクラスにFruitsクラスを継承
 # オーバーライドしているshow_quantity_priceメソッドをsuperで呼び出す（ポリモーフィズム）
 class Grape < Fruits
-  def show_quantity_price(product='ぶどう')
+  def show_quantity_price()
     super
   end
 end
 
 class Orange < Fruits
-  def show_quantity_price(product='オレンジ')
+  def show_quantity_price()
     super
   end
 end
 
-grape = Grape.new(2, 300)
-orange = Orange.new(4 ,300)
+grape = Grape.new("ぶどう", 2, 300)
+orange = Orange.new("オレンジ", 4 ,500)
 
 puts grape.show_quantity_price
 puts orange.show_quantity_price
