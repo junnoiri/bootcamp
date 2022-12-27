@@ -1,6 +1,6 @@
 require 'time'
 
-class TimeManagement
+class TimeTracking
   attr_accessor :task_name
   ONE_WEEK = 7
 
@@ -106,16 +106,16 @@ end
 
 class Option
   def check_option(option_kind)
-    time = TimeManagement.new(ARGV[1])
+    time_tracking = TimeTracking.new(ARGV[1])
     case option_kind
       when "-s", "--start"
-        time.record_start_time
+        time_tracking.record_start_time
       when "-f", "--finish"
-        time.record_end_time
+        time_tracking.record_end_time
       when "-vt", "--view-total"
-        time.show_today_tasks
+        time_tracking.show_today_tasks
       when "-vw", "--view-week"
-        time.show_week_tasks
+        time_tracking.show_week_tasks
       else
        puts "the entered option is not correct, Please follow the instructions below.
        [-s <task_name>] / [--start <task_name>] : Record task start time\n
